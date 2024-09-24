@@ -12,7 +12,6 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
-import DeletePost from './pages/DeletePost';
 import Authors from './pages/Authors';
 import AuthorPosts from './pages/AuthorPosts';
 import CategoryPosts from './pages/CategoryPosts';
