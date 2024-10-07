@@ -1,3 +1,17 @@
+/*
+1. GOOGLE FONTS
+2. CSS Variables
+3. Particles
+4. Header Section
+    a. Header top layer
+    b. Header bottom layer - large screen
+    c. Side Nav
+    d. Hover styles of header and side nav
+5. Footer Section
+6. HOME
+    a. Posts-css
+*/
+
 /*==================== GOOGLE FONTS ====================*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
@@ -14,6 +28,11 @@
 
     --primary-font: "Poppins", sans-serif;
 }
+
+a:-webkit-any-link {
+    text-decoration: none;
+    color: var(--space-gray);
+  }
 
 body{
     margin:0;
@@ -42,7 +61,6 @@ body{
     justify-content:space-evenly;
     background-color: white;
     filter: drop-shadow(0px 2px 4px #f4f4f4);
-    cursor: pointer;
 }
 
 .header-top-layer .logo{
@@ -112,7 +130,7 @@ body{
 .sidebar{
     height: 100%;
     width: 40%;
-    background-color: rgba(245, 245, 245, 0.8);
+    background-color: rgba(245, 245, 245, 1);
     position: fixed;
     top: 0;
     right: 0;
@@ -175,14 +193,15 @@ body{
     display: block; 
 }
 
+
 .sidebar-content{
     color: var(--space-gray);
 }
 
 .sidebar-icon{
     z-index:3;
-    position: fixed;
-    right: 1rem;
+    position: absolute;
+    right: 2rem;
     top:1.5rem;
     font-size:1.2rem;
     opacity: 0.5;
@@ -197,6 +216,10 @@ body{
     display: none;
 }
 
+hr{
+    display: none;
+}
+
 @media screen and (min-width: 820px){
     .sidebar-icon{
         display: none;
@@ -206,9 +229,9 @@ body{
 @media screen and (max-width: 800px){
     
     .large-devices{
-        display: none;
-        
+        display: none;       
     }
+
     }
 
     
@@ -262,18 +285,36 @@ body{
         padding: 0.4rem 0;
     }
 
+    
+    hr{
+        display: grid;
+    }
 }
 
 /* Hover styles of header and side nav  */
 
-    .header-top-layer div .social_icon:hover, .sidebar .sidebar-content a:hover,  .sidebar .social-group:hover{
+    .header-top-layer div .social_icon:hover, .sidebar .sidebar-content a:hover,  .sidebar .social_icon:hover{
         color: var(--blue-light);
         transition: color 0.3s ease-in-out;
+        cursor: pointer;
     }
     
     .sidebar-icon:hover, .sidebar .search-icon:hover{
         opacity: 1;
         transition: opacity 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    
+    .header-top-layer .logo:hover{
+        color: var(--blue);
+        transition: color 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    
+    .header-bottom-layer button:hover{
+        background-color: var(--space-gray);
+        transition: background-color 0.3s ease-in-out;
+        cursor: pointer;
     }
 
 /*==================== Footer Section ====================*/
@@ -281,10 +322,145 @@ body{
 footer{
     display: flex;
     justify-content: center;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     background-color: var(--blue-light);
     color: var(--powder-white);
     font-size:smaller;
+}
+
+/*==================== HOME ====================*/
+
+/* Posts-css  */
+
+section.posts{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 75%;
+    margin: auto;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+article.post{
+    background-color: white;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.09);
+}
+
+article.post .post_thumbnail img{
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+article.post a.category{
+    font-size: x-small;
+    font-weight: 200;
+    opacity: 0.6;
+
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+}
+
+article.post .post_content h2{
+    margin-bottom: 0;
+    margin-top: 0.3rem;
+    line-height: 1rem;
+    font-size: 1.3rem;
+}
+
+article.post .post_content p{
+    font-size: 0.8rem;
+}
+
+article.post .post_content h2, .author_details, .post_footer{
+    color: var(--space-gray);
+}
+
+article.post .post_content, article.post .post_footer{
+    padding: 1rem;
+}
+
+article.post .post_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.post_details{
+    display: flex;
+}
+
+.author_avatar img{
+    border-radius: 50%;    
+}
+
+.author_details p{
+    font-weight: bold;
+    font-size: smaller;
+    margin: 0 0.7rem;
+    line-height: 1.1rem;
+}
+.author_details span{
+    font-weight: normal;
+    font-size: x-small;
+}
+
+/* hover */
+
+article.post a.category:hover{
+
+    background-color: rgba(0, 0, 0, 0.09);
+    transition: background-color 0.3s ease;
+}
+
+article.post:hover{
+    scale: 102%;
+    transition: scale 0.3s ease;
+}
+
+/* for small, medium and large scale devices */
+
+@media(max-width:800px){
+    section.posts{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        width: 80%;
+    }
+}
+
+@media(max-width:400px){
+    article.post .post_content h2{
+        font-size: 1rem;
+        margin: 0;
+    } 
+
+    article.post .post_content p{
+        font-size: 0.6rem;
+        margin: 0.2rem 0;
+    } 
+    
+    .author_details p{
+        font-size: 0.6rem;
+        line-height: 0.8rem;
+    }
+    
+    .author_details span{
+        font-size: 0.5rem;
+    }
+
+    .author_avatar img{
+        height: 25px; 
+        width: 25px; 
+    }
+
+    article.post a.category{
+        font-size: 0.5rem;
+    }
 }
